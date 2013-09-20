@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 require 'nokogiri'
 require 'open-uri'
 require 'mail'
@@ -25,12 +26,12 @@ entries.each do |entry|
   break
 end
 
-message = "The next '#{classToSearchFor}' class at Triyoga will be given by #{teacher.text}"
+message = "The next Triyoga '#{classToSearchFor}' class is with #{teacher.text}"
 mail = Mail.new do
   delivery_method :smtp, options
   to              'tiapio@gmail.com,yannickwurm@gmail.com,bridgetchecker@gmail.com'
   from            'bridgetchecker@gmail.com'
-  subject         'Next Yoga Class at Triyoga Primrose Hill'
+  subject         "#{teacher.text} at Triyoga"
   body            message
 end
 
